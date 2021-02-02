@@ -13,6 +13,55 @@ public class IntArrayWorker {
 	}
 
 	/**
+	 * Counts the number of times an integer
+	 * is found within the 2D array.
+	 * 
+	 * @return
+	 */
+	public int getCount(int number) {
+		int count = 0;
+		for(int row = 0; row < matrix.length; row++) {
+			for(int col = 0; col < matrix[0].length; col++) {
+				if(matrix[row][col] == number) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+
+	/**
+	 * Finds the largest int in the array.
+	 * 
+	 * @return
+	 */
+	public int getLargest() {
+		int number = 0;
+		for(int row = 0; row < matrix.length; row++) {
+			for(int col = 0; col < matrix[0].length; col++) {
+				if(matrix[row][col] > number) {
+					number = matrix[row][col];
+				}
+			}
+		}
+		return number;
+	}
+
+	/**
+	 * Gets the total of the integers in a column.
+	 * 
+	 * @return
+	 */
+	public int getColTotal(int col) {
+		int total = 0;
+		for(int row = 0; row < matrix.length; row++) {
+			total = total + matrix[row][col];
+		}
+		return total;
+	}
+
+
+	/**
 	 * Method to return the total
 	 * 
 	 * @return the total of the values in the array
