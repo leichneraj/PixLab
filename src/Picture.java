@@ -95,6 +95,48 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void keepOnlyBlue() {
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for(Pixel pixelObj : rowArray) {
+				pixelObj.setGreen(0);
+				pixelObj.setRed(0);
+			}
+		}
+	}
+
+	public void negate() {
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for(Pixel pixelObj : rowArray) {
+				pixelObj.setRed(255 - pixelObj.getRed());
+				pixelObj.setGreen(255 - pixelObj.getGreen());
+				pixelObj.setBlue(255 - pixelObj.getBlue());
+			}
+		}
+	}
+
+	public void grayscale() {
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for(Pixel pixelObj : rowArray) {
+				int avrg = (pixelObj.getRed() + pixelObj.getGreen() + pixelObj.getBlue()) / 3;
+				pixelObj.setRed(avrg);
+				pixelObj.setGreen(avrg);
+				pixelObj.setBlue(avrg);
+			}
+		}
+	}
+
+	public void fixUnderwater() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setBlue(pixelObj.getBlue() + 25);
+			}
+		}
+	}
+
 	/**
 	 * Method that mirrors the picture around a vertical mirror in the center of
 	 * the picture from left to right
