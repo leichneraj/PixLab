@@ -175,6 +175,20 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void mirrorVerticalLeftToRight() {
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		int width = pixels[0].length;
+		for (int row = 0; row < pixels.length; row++) {
+			for (int col = width; col > width / 2; col--) {
+				rightPixel = pixels[row][col];
+				leftPixel = pixels[row][width - 1 - col];
+				leftPixel.setColor(rightPixel.getColor());
+			}
+		}
+	}
+
 	/**
 	 * copy from the passed fromPic to the specified startRow and startCol in
 	 * the current picture

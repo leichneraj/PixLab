@@ -62,6 +62,13 @@ public class PictureTester
     temple.mirrorTemple();
     temple.explore();
   }
+
+  public static void testMirrorVerticalRightToLeft() {
+    Picture temple = new Picture("temple.jpg");
+    temple.explore();
+    temple.mirrorVerticalLeftToRight();
+    temple.explore();
+  }
   
   /** Method to test the collage method */
   public static void testCollage()
@@ -83,24 +90,25 @@ public class PictureTester
     * method in Java */
   public static void main(String[] args)
   {
-    testNegate();
-    testKeepOnlyBlue();
-    testGrayscale();
-    testFixUnderwater();
+    // testNegate();
+    // testKeepOnlyBlue();
+    // testGrayscale();
+    // testFixUnderwater();
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    // testZeroBlue();
     // testKeepOnlyRed();
     // testKeepOnlyGreen();
-    testMirrorVertical();
-    testMirrorTemple();
+    // testMirrorVertical();
+    // testMirrorTemple();
+    testMirrorVerticalRightToLeft();
     // testMirrorArms();
     // testMirrorGull();
     // testMirrorDiagonal();
-    testCollage();
+    // testCollage();
     // testCopy();
-    testEdgeDetection();
+    // testEdgeDetection();
     // testEdgeDetection2();
     // testChromakey();
     // testEncodeAndDecode();
