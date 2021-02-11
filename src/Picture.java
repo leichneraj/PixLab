@@ -254,6 +254,22 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void copyPart(Picture fromPic, int startRow, int startCol, int rowSize, int colSize) {
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = fromPic.getPixels2D();
+		for (int fromRow = rowSize, toRow = startRow; fromRow < fromPixels.length
+				&& toRow < toPixels.length; fromRow++, toRow++) {
+			for (int fromCol = colSize, toCol = startCol; fromCol < fromPixels[0].length
+					&& toCol < toPixels[0].length; fromCol++, toCol++) {
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+				toPixel.setColor(fromPixel.getColor());
+			}
+		}
+	}
+
 	/** Method to create a collage of several pictures */
 	public void createCollage() {
 		Picture flower1 = new Picture("flower1.jpg");
@@ -266,6 +282,36 @@ public class Picture extends SimplePicture {
 		this.copy(flowerNoBlue, 300, 0);
 		this.copy(flower1, 400, 0);
 		this.copy(flower2, 500, 0);
+		this.mirrorVertical();
+		this.write("collage.jpg");
+	}
+
+	public void createPartCollage() {
+		Picture flower1 = new Picture("flower1.jpg");
+		Picture flower2 = new Picture("flower2.jpg");
+		this.copyPart(flower1, 0, 0, 10, 50);
+		this.copyPart(flower2, 100, 0, 10, 50);
+		this.copyPart(flower1, 200, 0, 10, 50);
+		Picture flowerNoBlue = new Picture(flower2);
+		flowerNoBlue.zeroBlue();
+		this.copyPart(flowerNoBlue, 300, 0, 10, 50);
+		this.copyPart(flower1, 400, 0, 10, 50);
+		this.copyPart(flower2, 500, 0, 10, 50);
+		this.mirrorVertical();
+		this.write("collage.jpg");
+	}
+	
+	public void myCollage() {
+		Picture beach = new Picture("beach.jpg");
+		Picture gorge = new Picture("gorge.jpg");
+		this.copy(beach, 0, 0);
+		this.copy(gorge, 100, 0);
+		this.copy(beach, 200, 0);
+		Picture beachNoBlue = new Picture(beach);
+		beachNoBlue.zeroBlue();
+		this.copy(beachNoBlue, 300, 0);
+		this.copy(beach, 400, 0);
+		this.copy(gorge, 500, 0);
 		this.mirrorVertical();
 		this.write("collage.jpg");
 	}
