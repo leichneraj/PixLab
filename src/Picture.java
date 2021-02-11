@@ -95,6 +95,24 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void zeroGreen() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setGreen(0);
+			}
+		}
+	}
+
+	public void zeroRed() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(0);
+			}
+		}
+	}
+
 	public void keepOnlyBlue() {
 		Pixel[][] pixels = this.getPixels2D();
 		for(Pixel[] rowArray : pixels) {
@@ -304,14 +322,21 @@ public class Picture extends SimplePicture {
 	public void myCollage() {
 		Picture beach = new Picture("beach.jpg");
 		Picture gorge = new Picture("gorge.jpg");
-		this.copy(beach, 0, 0);
-		this.copy(gorge, 100, 0);
-		this.copy(beach, 200, 0);
 		Picture beachNoBlue = new Picture(beach);
+		Picture beachNoRed = new Picture(beach);
+		Picture gorgeNoGreen = new Picture(gorge);
+		Picture gorgeNoBlue = new Picture(gorge);
+		Picture gorgeNoRed = new Picture(gorge);
 		beachNoBlue.zeroBlue();
-		this.copy(beachNoBlue, 300, 0);
-		this.copy(beach, 400, 0);
-		this.copy(gorge, 500, 0);
+		beachNoRed.zeroRed();
+		gorgeNoGreen.zeroGreen();
+		gorgeNoBlue.zeroBlue();
+		gorgeNoRed.zeroRed();
+		this.copy(gorgeNoGreen, 0, 0);
+		this.copy(beachNoRed, 100, 0);
+		this.copy(gorgeNoRed, 200, 0);
+		this.copy(gorgeNoBlue, 300, 0);
+		this.copy(beachNoBlue, 400, 0);
 		this.mirrorVertical();
 		this.write("collage.jpg");
 	}

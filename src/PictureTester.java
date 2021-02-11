@@ -132,9 +132,9 @@ public class PictureTester
     // testMirrorArms();
     // testMirrorGull();
     // testMirrorDiagonal();
-    testCollage();
+    // testCollage();
     // testCopy();
-    testCollagePart();
+    // testCollagePart();
     testMyCollage();
     // testEdgeDetection();
     // testEdgeDetection2();
